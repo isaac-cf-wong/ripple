@@ -1,0 +1,18 @@
+{
+  "waveform": "TaylorF2",
+  "device": "cpu",
+  "n_waveforms": 100,
+  "batch_size": 1000,
+  "precision": "float32",
+  "duration": 4.0,
+  "minimum_frequency": 20.0,
+  "maximum_frequency": 2048.0,
+  "reference_frequency": 50.0,
+  "timestamp": "2026-01-29T14:59:21.304275",
+  "git_hash": "7139b3a26cabeb5bf3f31dcfea191f44da97cbe8",
+  "device_name": "cpu",
+  "warmup_time_s": 1.3533971309661865,
+  "execution_time_s": 0.06330108642578125,
+  "time_per_waveform_ms": 0.6330108642578125,
+  "waveforms_per_second": 1579.7517174882487
+}

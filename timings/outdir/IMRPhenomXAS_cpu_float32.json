@@ -1,0 +1,18 @@
+{
+  "waveform": "IMRPhenomXAS",
+  "device": "cpu",
+  "n_waveforms": 1000,
+  "batch_size": 1000,
+  "precision": "float32",
+  "duration": 4.0,
+  "minimum_frequency": 20.0,
+  "maximum_frequency": 2048.0,
+  "reference_frequency": 50.0,
+  "timestamp": "2026-01-29T15:00:56.183631",
+  "git_hash": "7139b3a26cabeb5bf3f31dcfea191f44da97cbe8",
+  "device_name": "cpu",
+  "warmup_time_s": 8.243352174758911,
+  "execution_time_s": 8.356854915618896,
+  "time_per_waveform_ms": 8.356854915618896,
+  "waveforms_per_second": 119.66224256580162
+}

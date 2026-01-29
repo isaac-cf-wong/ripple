@@ -28,6 +28,32 @@ def get_git_hash():
         return "unknown"
 
 
+def get_device_name():
+    """Get the actual device name (CPU or GPU model like H100)."""
+    devices = jax.devices()
+    if len(devices) == 0:
+        return "cpu"
+
+    device = devices[0]
+    if device.platform == "cpu":
+        return "cpu"
+    else:
+        # For GPU, get the device kind (e.g., "NVIDIA H100")
+        device_kind = device.device_kind
+        # Try to extract just the GPU model name
+        if "H100" in device_kind:
+            return "H100"
+        elif "A100" in device_kind:
+            return "A100"
+        elif "V100" in device_kind:
+            return "V100"
+        elif "T4" in device_kind:
+            return "T4"
+        else:
+            # Fallback to the full device kind or just "gpu"
+            return device_kind if device_kind else "gpu"
+
+
 def setup_jax_config(use_float64, device):
     """Configure JAX settings for precision and device."""
     jax.config.update("jax_enable_x64", use_float64)
@@ -45,6 +71,8 @@ def setup_jax_config(use_float64, device):
     for d in jax.devices():
         print(f"  Device: {d.device_kind}, Platform: {d.platform}")
     print(f"{'=' * 60}\n")
+
+    return get_device_name()
 
 
 def generate_bbh_parameters(n_waveforms, seed=42):
@@ -152,24 +180,37 @@ def time_imrphenomxphm(params, config):
     from ripplegw.waveforms import IMRPhenomXPHM
 
     # Stack parameters for lax.map
-    params_stacked = jnp.stack([
-        params["mass_1"],
-        params["mass_2"],
-        params["spin_1x"],
-        params["spin_1y"],
-        params["spin_1z"],
-        params["spin_2x"],
-        params["spin_2y"],
-        params["spin_2z"],
-        params["luminosity_distance"],
-        params["theta_jn"],
-        params["phase"],
-    ], axis=1)
+    params_stacked = jnp.stack(
+        [
+            params["mass_1"],
+            params["mass_2"],
+            params["spin_1x"],
+            params["spin_1y"],
+            params["spin_1z"],
+            params["spin_2x"],
+            params["spin_2y"],
+            params["spin_2z"],
+            params["luminosity_distance"],
+            params["theta_jn"],
+            params["phase"],
+        ],
+        axis=1,
+    )
 
     # Create batched version using lax.map
     def generate_single(p):
         return IMRPhenomXPHM.generate_xphm(
-            p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10],
+            p[0],
+            p[1],
+            p[2],
+            p[3],
+            p[4],
+            p[5],
+            p[6],
+            p[7],
+            p[8],
+            p[9],
+            p[10],
             config["duration"],
             config["minimum_frequency"],
             config["maximum_frequency"],
@@ -240,7 +281,7 @@ def time_aligned_waveform(waveform_func, params, config):
     waveform_batched = lambda xs: jax.lax.map(
         lambda p: waveform_func(f, p, config["reference_frequency"]),
         xs,
-        batch_size=config["batch_size"]
+        batch_size=config["batch_size"],
     )
 
     # Warm-up run
@@ -307,7 +348,7 @@ def time_precessing_waveform(waveform_func, params, config):
     waveform_batched = lambda xs: jax.lax.map(
         lambda p: waveform_func(f, p, config["reference_frequency"]),
         xs,
-        batch_size=config["batch_size"]
+        batch_size=config["batch_size"],
     )
 
     # Warm-up run
@@ -382,7 +423,7 @@ def time_bns_waveform(waveform_func, params, config):
     waveform_batched = lambda xs: jax.lax.map(
         lambda p: waveform_func(f, p, config["reference_frequency"]),
         xs,
-        batch_size=config["batch_size"]
+        batch_size=config["batch_size"],
     )
 
     # Warm-up run
@@ -426,8 +467,9 @@ def run_timing(args):
         "git_hash": get_git_hash(),
     }
 
-    # Setup JAX
-    setup_jax_config(args.float64, args.device)
+    # Setup JAX and get actual device name
+    device_name = setup_jax_config(args.float64, args.device)
+    config["device_name"] = device_name
 
     # Print configuration
     print(f"{'=' * 60}")
@@ -502,9 +544,14 @@ def run_timing(args):
     if args.output:
         output_path = Path(args.output)
     else:
-        output_path = Path(
-            f"timing_{args.waveform}.json"
-        )
+        # Create output directory if it doesn't exist
+        outdir = Path("./outdir")
+        outdir.mkdir(exist_ok=True)
+
+        # Construct filename: waveform_devicename_floatxx.json
+        precision_str = "float64" if args.float64 else "float32"
+        filename = f"{args.waveform}_{device_name}_{precision_str}.json"
+        output_path = outdir / filename
 
     with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
@@ -553,7 +600,7 @@ def main():
         default=int(2e4),
         help="Number of waveforms to generate (for vmapping)",
     )
-    
+
     parser.add_argument(
         "--batch-size",
         type=int,
