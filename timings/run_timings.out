@@ -1,0 +1,237 @@
+Thu Jan 29 15:09:46 CET 2026
+NVIDIA H100
+W0129 15:09:48.277737  193671 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:09:48.283681  193617 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+
+============================================================
+JAX Configuration
+============================================================
+Precision: float64
+Requested device: gpu
+JAX devices: [CudaDevice(id=0)]
+Default backend: gpu
+  Device: NVIDIA H100, Platform: gpu
+============================================================
+
+============================================================
+Timing Configuration
+============================================================
+Waveform: TaylorF2
+Number of waveforms: 10000
+Duration: 4.0 s
+Frequency range: 20.0 - 2048.0 Hz
+Reference frequency: 50.0 Hz
+Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+============================================================
+
+Generated 10000 parameter sets
+Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'lambda_1', 'lambda_2', 'luminosity_distance', 'theta_jn', 'phase', 'geocent_time']
+
+
+============================================================
+Warm-up run (JIT compilation)
+============================================================
+Warm-up time (includes JIT): 1.172 s
+
+============================================================
+Timed run
+============================================================
+
+============================================================
+Timing Results
+============================================================
+Warm-up time (includes JIT): 1.172328 s
+Execution time for 10000 waveforms: 1.063637 s
+Time per waveform: 0.106 ms
+Waveforms per second: 9401.7
+============================================================
+
+Results saved to: outdir/TaylorF2_H100_float64.json
+W0129 15:11:04.634390  193855 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:11:04.639354  193792 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+
+============================================================
+JAX Configuration
+============================================================
+Precision: float64
+Requested device: gpu
+JAX devices: [CudaDevice(id=0)]
+Default backend: gpu
+  Device: NVIDIA H100, Platform: gpu
+============================================================
+
+============================================================
+Timing Configuration
+============================================================
+Waveform: IMRPhenomD
+Number of waveforms: 10000
+Duration: 4.0 s
+Frequency range: 20.0 - 2048.0 Hz
+Reference frequency: 50.0 Hz
+Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+============================================================
+
+Generated 10000 parameter sets
+Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1z', 'spin_2x', 'spin_2y', 'spin_2z', 'luminosity_distance', 'theta_jn', 'phase', 'geocent_time']
+
+
+============================================================
+Warm-up run (JIT compilation)
+============================================================
+Warm-up time (includes JIT): 4.555 s
+
+============================================================
+Timed run
+============================================================
+
+============================================================
+Timing Results
+============================================================
+Warm-up time (includes JIT): 4.555265 s
+Execution time for 10000 waveforms: 4.160532 s
+Time per waveform: 0.416 ms
+Waveforms per second: 2403.5
+============================================================
+
+Results saved to: outdir/IMRPhenomD_H100_float64.json
+W0129 15:11:45.634924  194052 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:11:45.639963  193996 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+
+============================================================
+JAX Configuration
+============================================================
+Precision: float64
+Requested device: gpu
+JAX devices: [CudaDevice(id=0)]
+Default backend: gpu
+  Device: NVIDIA H100, Platform: gpu
+============================================================
+
+============================================================
+Timing Configuration
+============================================================
+Waveform: IMRPhenomXAS
+Number of waveforms: 10000
+Duration: 4.0 s
+Frequency range: 20.0 - 2048.0 Hz
+Reference frequency: 50.0 Hz
+Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+============================================================
+
+Generated 10000 parameter sets
+Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1z', 'spin_2x', 'spin_2y', 'spin_2z', 'luminosity_distance', 'theta_jn', 'phase', 'geocent_time']
+
+
+============================================================
+Warm-up run (JIT compilation)
+============================================================
+Warm-up time (includes JIT): 28.788 s
+
+============================================================
+Timed run
+============================================================
+
+============================================================
+Timing Results
+============================================================
+Warm-up time (includes JIT): 28.788407 s
+Execution time for 10000 waveforms: 28.576479 s
+Time per waveform: 2.858 ms
+Waveforms per second: 349.9
+============================================================
+
+Results saved to: outdir/IMRPhenomXAS_H100_float64.json
+W0129 15:13:15.637323  196886 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:13:15.643865  196830 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+
+============================================================
+JAX Configuration
+============================================================
+Precision: float64
+Requested device: gpu
+JAX devices: [CudaDevice(id=0)]
+Default backend: gpu
+  Device: NVIDIA H100, Platform: gpu
+============================================================
+
+============================================================
+Timing Configuration
+============================================================
+Waveform: IMRPhenomPv2
+Number of waveforms: 10000
+Duration: 4.0 s
+Frequency range: 20.0 - 2048.0 Hz
+Reference frequency: 50.0 Hz
+Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+============================================================
+
+Generated 10000 parameter sets
+Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1z', 'spin_2x', 'spin_2y', 'spin_2z', 'luminosity_distance', 'theta_jn', 'phase', 'geocent_time']
+
+
+============================================================
+Warm-up run (JIT compilation)
+============================================================
+Warm-up time (includes JIT): 6.611 s
+
+============================================================
+Timed run
+============================================================
+
+============================================================
+Timing Results
+============================================================
+Warm-up time (includes JIT): 6.611314 s
+Execution time for 10000 waveforms: 6.409241 s
+Time per waveform: 0.641 ms
+Waveforms per second: 1560.2
+============================================================
+
+Results saved to: outdir/IMRPhenomPv2_H100_float64.json
+W0129 15:14:10.642307  197090 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:14:10.647228  197036 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+
+============================================================
+JAX Configuration
+============================================================
+Precision: float64
+Requested device: gpu
+JAX devices: [CudaDevice(id=0)]
+Default backend: gpu
+  Device: NVIDIA H100, Platform: gpu
+============================================================
+
+============================================================
+Timing Configuration
+============================================================
+Waveform: IMRPhenomXPHM
+Number of waveforms: 10000
+Duration: 4.0 s
+Frequency range: 20.0 - 2048.0 Hz
+Reference frequency: 50.0 Hz
+Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+============================================================
+
+Generated 10000 parameter sets
+Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1z', 'spin_2x', 'spin_2y', 'spin_2z', 'luminosity_distance', 'theta_jn', 'phase', 'geocent_time']
+
+
+============================================================
+Warm-up run (JIT compilation)
+============================================================
+Warm-up time (includes JIT): 22.358 s
+
+============================================================
+Timed run
+============================================================
+
+============================================================
+Timing Results
+============================================================
+Warm-up time (includes JIT): 22.358328 s
+Execution time for 10000 waveforms: 17.847598 s
+Time per waveform: 1.785 ms
+Waveforms per second: 560.3
+============================================================
+
+Results saved to: outdir/IMRPhenomXPHM_H100_float64.json

@@ -21,11 +21,12 @@ source /home/twouters2/projects/11_jaxphm/.venv/bin/activate
 # Display GPU name
 nvidia-smi --query-gpu=name --format=csv,noheader
 
-$DEVICE = "gpu"
-$N_WAVEFORMS = "1000"
+DEVICE="gpu"
+N_WAVEFORMS="10000"
+PRECISION="float64"
 
-ripple_time TaylorF2 --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
-ripple_time IMRPhenomD --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
-ripple_time IMRPhenomXAS --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
-ripple_time IMRPhenomPv2 --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
-ripple_time IMRPhenomXPHM --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
+ripple_time TaylorF2 --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
+ripple_time IMRPhenomD --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
+ripple_time IMRPhenomXAS --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
+ripple_time IMRPhenomPv2 --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
+ripple_time IMRPhenomXPHM --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
