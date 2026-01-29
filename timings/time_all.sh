@@ -23,9 +23,8 @@ nvidia-smi --query-gpu=name --format=csv,noheader
 
 $DEVICE = "gpu"
 $N_WAVEFORMS = "1000"
-$FLOAT64 = "True"
 
-ripple_time TaylorF2 --device $DEVICE --n-waveforms $N_WAVEFORMS --float64 $FLOAT64
-ripple_time IMRPhenomD --device $DEVICE --n-waveforms $N_WAVEFORMS --float64 $FLOAT64
-ripple_time IMRPhenomXAS --device $DEVICE --n-waveforms $N_WAVEFORMS --float64 $FLOAT64
-ripple_time IMRPhenomPv2 --device $DEVICE --n-waveforms $N_WAVEFORMS --float64 $FLOAT64
+ripple_time TaylorF2 --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
+ripple_time IMRPhenomD --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
+ripple_time IMRPhenomXAS --device $DEVICE --n-waveforms $N_WAVEFORMS --float64
+ripple_time IMRPhenomPv2 --device $DEVICE --n-waveforms $N_WAVEFORMS --float64

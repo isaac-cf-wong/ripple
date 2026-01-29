@@ -151,18 +151,8 @@ def time_imrphenomxphm(params, config):
     """Time IMRPhenomXPHM waveform generation."""
     from ripplegw.waveforms import IMRPhenomXPHM
 
-    # Create batched version
-    generate_xphm_batched = jax.vmap(
-        IMRPhenomXPHM.generate_xphm,
-        in_axes=(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, None, None, None, None),
-    )
-
-    # Warm-up run (JIT compilation)
-    print(f"\n{'=' * 60}")
-    print("Warm-up run (JIT compilation)")
-    print(f"{'=' * 60}")
-    start = time.time()
-    hp, hc = generate_xphm_batched(
+    # Stack parameters for lax.map
+    params_stacked = jnp.stack([
         params["mass_1"],
         params["mass_2"],
         params["spin_1x"],
@@ -174,11 +164,28 @@ def time_imrphenomxphm(params, config):
         params["luminosity_distance"],
         params["theta_jn"],
         params["phase"],
-        config["duration"],
-        config["minimum_frequency"],
-        config["maximum_frequency"],
-        config["reference_frequency"],
+    ], axis=1)
+
+    # Create batched version using lax.map
+    def generate_single(p):
+        return IMRPhenomXPHM.generate_xphm(
+            p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9], p[10],
+            config["duration"],
+            config["minimum_frequency"],
+            config["maximum_frequency"],
+            config["reference_frequency"],
+        )
+
+    generate_xphm_batched = lambda xs: jax.lax.map(
+        generate_single, xs, batch_size=config["batch_size"]
     )
+
+    # Warm-up run (JIT compilation)
+    print(f"\n{'=' * 60}")
+    print("Warm-up run (JIT compilation)")
+    print(f"{'=' * 60}")
+    start = time.time()
+    hp, hc = generate_xphm_batched(params_stacked)
     hp.block_until_ready()
     hc.block_until_ready()
     warmup_time = time.time() - start
@@ -189,23 +196,7 @@ def time_imrphenomxphm(params, config):
     print("Timed run")
     print(f"{'=' * 60}")
     start = time.time()
-    hp, hc = generate_xphm_batched(
-        params["mass_1"],
-        params["mass_2"],
-        params["spin_1x"],
-        params["spin_1y"],
-        params["spin_1z"],
-        params["spin_2x"],
-        params["spin_2y"],
-        params["spin_2z"],
-        params["luminosity_distance"],
-        params["theta_jn"],
-        params["phase"],
-        config["duration"],
-        config["minimum_frequency"],
-        config["maximum_frequency"],
-        config["reference_frequency"],
-    )
+    hp, hc = generate_xphm_batched(params_stacked)
     hp.block_until_ready()
     hc.block_until_ready()
     exec_time = time.time() - start
@@ -245,9 +236,11 @@ def time_aligned_waveform(waveform_func, params, config):
 
     param_arrays = jnp.stack(param_arrays)
 
-    # Create vmapped version
-    waveform_batched = jax.vmap(
-        lambda p: waveform_func(f, p, config["reference_frequency"]), in_axes=0
+    # Create batched version using lax.map
+    waveform_batched = lambda xs: jax.lax.map(
+        lambda p: waveform_func(f, p, config["reference_frequency"]),
+        xs,
+        batch_size=config["batch_size"]
     )
 
     # Warm-up run
@@ -310,9 +303,11 @@ def time_precessing_waveform(waveform_func, params, config):
 
     param_arrays = jnp.stack(param_arrays)
 
-    # Create vmapped version
-    waveform_batched = jax.vmap(
-        lambda p: waveform_func(f, p, config["reference_frequency"]), in_axes=0
+    # Create batched version using lax.map
+    waveform_batched = lambda xs: jax.lax.map(
+        lambda p: waveform_func(f, p, config["reference_frequency"]),
+        xs,
+        batch_size=config["batch_size"]
     )
 
     # Warm-up run
@@ -383,9 +378,11 @@ def time_bns_waveform(waveform_func, params, config):
 
     param_arrays = jnp.stack(param_arrays)
 
-    # Create vmapped version
-    waveform_batched = jax.vmap(
-        lambda p: waveform_func(f, p, config["reference_frequency"]), in_axes=0
+    # Create batched version using lax.map
+    waveform_batched = lambda xs: jax.lax.map(
+        lambda p: waveform_func(f, p, config["reference_frequency"]),
+        xs,
+        batch_size=config["batch_size"]
     )
 
     # Warm-up run
@@ -419,6 +416,7 @@ def run_timing(args):
         "waveform": args.waveform,
         "device": args.device,
         "n_waveforms": args.n_waveforms,
+        "batch_size": args.batch_size,
         "precision": "float64" if args.float64 else "float32",
         "duration": args.duration,
         "minimum_frequency": args.f_min,

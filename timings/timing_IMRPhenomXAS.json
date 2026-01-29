@@ -2,15 +2,16 @@
   "waveform": "IMRPhenomXAS",
   "device": "cpu",
   "n_waveforms": 1000,
+  "batch_size": 1000,
   "precision": "float32",
   "duration": 4.0,
   "minimum_frequency": 20.0,
-  "maximum_frequency": 512.0,
+  "maximum_frequency": 2048.0,
   "reference_frequency": 50.0,
-  "timestamp": "2026-01-29T14:47:52.687410",
-  "git_hash": "3e99aec68bc53a0b321996bcc1b2f2f67999b6fe",
-  "warmup_time_s": 7.112926006317139,
-  "execution_time_s": 4.881937265396118,
-  "time_per_waveform_ms": 4.881937265396118,
-  "waveforms_per_second": 204.8367165813755
+  "timestamp": "2026-01-29T14:53:08.833822",
+  "git_hash": "dcfa7ebd47239d49da6675efb628eae802d3afac",
+  "warmup_time_s": 8.394087791442871,
+  "execution_time_s": 8.632117986679077,
+  "time_per_waveform_ms": 8.632117986679077,
+  "waveforms_per_second": 115.84642396491583
 }
