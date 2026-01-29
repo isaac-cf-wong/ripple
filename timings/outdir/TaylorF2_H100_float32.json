@@ -1,0 +1,18 @@
+{
+  "waveform": "TaylorF2",
+  "device": "gpu",
+  "n_waveforms": 10000,
+  "batch_size": 1000,
+  "precision": "float32",
+  "duration": 4.0,
+  "minimum_frequency": 20.0,
+  "maximum_frequency": 2048.0,
+  "reference_frequency": 50.0,
+  "timestamp": "2026-01-29T15:28:38.016721",
+  "git_hash": "b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8",
+  "device_name": "H100",
+  "warmup_time_s": 1.107740879058838,
+  "execution_time_s": 0.9966676235198975,
+  "time_per_waveform_ms": 0.09966676235198973,
+  "waveforms_per_second": 10033.435183419862
+}

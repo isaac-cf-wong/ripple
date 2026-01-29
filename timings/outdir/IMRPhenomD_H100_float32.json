@@ -1,0 +1,18 @@
+{
+  "waveform": "IMRPhenomD",
+  "device": "gpu",
+  "n_waveforms": 10000,
+  "batch_size": 1000,
+  "precision": "float32",
+  "duration": 4.0,
+  "minimum_frequency": 20.0,
+  "maximum_frequency": 2048.0,
+  "reference_frequency": 50.0,
+  "timestamp": "2026-01-29T15:29:53.082106",
+  "git_hash": "b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8",
+  "device_name": "H100",
+  "warmup_time_s": 4.397424697875977,
+  "execution_time_s": 4.086161851882935,
+  "time_per_waveform_ms": 0.40861618518829346,
+  "waveforms_per_second": 2447.2843618252477
+}

@@ -23,10 +23,21 @@ nvidia-smi --query-gpu=name --format=csv,noheader
 
 DEVICE="gpu"
 N_WAVEFORMS="10000"
-PRECISION="float64"
 
-ripple_time TaylorF2 --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
-ripple_time IMRPhenomD --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
-ripple_time IMRPhenomXAS --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
-ripple_time IMRPhenomPv2 --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
-ripple_time IMRPhenomXPHM --device $DEVICE --n-waveforms $N_WAVEFORMS --precision $PRECISION
+# PRECISIONS=("float32" "float64")
+PRECISIONS=("float32")
+MODELS=("TaylorF2" "IMRPhenomD" "IMRPhenomXAS" "IMRPhenomPv2" "IMRPhenomXPHM")
+
+for PRECISION in "${PRECISIONS[@]}"; do
+    echo "=============================="
+    echo "Running with precision = $PRECISION"
+    echo "=============================="
+
+    for MODEL in "${MODELS[@]}"; do
+        echo "Running $MODEL with precision $PRECISION"
+        ripple_time "$MODEL" \
+            --device "$DEVICE" \
+            --n-waveforms "$N_WAVEFORMS" \
+            --precision "$PRECISION"
+    done
+done

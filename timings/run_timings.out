@@ -1,12 +1,16 @@
-Thu Jan 29 15:09:46 CET 2026
+Thu Jan 29 15:28:36 CET 2026
 NVIDIA H100
-W0129 15:09:48.277737  193671 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
-W0129 15:09:48.283681  193617 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+==============================
+Running with precision = float32
+==============================
+Running TaylorF2 with precision float32
+W0129 15:28:39.670077 1614836 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:28:39.676911 1614771 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
 
 ============================================================
 JAX Configuration
 ============================================================
-Precision: float64
+Precision: float32
 Requested device: gpu
 JAX devices: [CudaDevice(id=0)]
 Default backend: gpu
@@ -21,7 +25,7 @@ Number of waveforms: 10000
 Duration: 4.0 s
 Frequency range: 20.0 - 2048.0 Hz
 Reference frequency: 50.0 Hz
-Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+Git hash: b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8
 ============================================================
 
 Generated 10000 parameter sets
@@ -31,7 +35,7 @@ Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'lambda_1', 'lambda_2', 'lumi
 ============================================================
 Warm-up run (JIT compilation)
 ============================================================
-Warm-up time (includes JIT): 1.172 s
+Warm-up time (includes JIT): 1.108 s
 
 ============================================================
 Timed run
@@ -40,20 +44,21 @@ Timed run
 ============================================================
 Timing Results
 ============================================================
-Warm-up time (includes JIT): 1.172328 s
-Execution time for 10000 waveforms: 1.063637 s
-Time per waveform: 0.106 ms
-Waveforms per second: 9401.7
+Warm-up time (includes JIT): 1.107741 s
+Execution time for 10000 waveforms: 0.996668 s
+Time per waveform: 0.100 ms
+Waveforms per second: 10033.4
 ============================================================
 
-Results saved to: outdir/TaylorF2_H100_float64.json
-W0129 15:11:04.634390  193855 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
-W0129 15:11:04.639354  193792 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+Results saved to: outdir/TaylorF2_H100_float32.json
+Running IMRPhenomD with precision float32
+W0129 15:29:53.924912 1615021 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:29:53.930054 1614967 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
 
 ============================================================
 JAX Configuration
 ============================================================
-Precision: float64
+Precision: float32
 Requested device: gpu
 JAX devices: [CudaDevice(id=0)]
 Default backend: gpu
@@ -68,7 +73,7 @@ Number of waveforms: 10000
 Duration: 4.0 s
 Frequency range: 20.0 - 2048.0 Hz
 Reference frequency: 50.0 Hz
-Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+Git hash: b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8
 ============================================================
 
 Generated 10000 parameter sets
@@ -78,7 +83,7 @@ Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1
 ============================================================
 Warm-up run (JIT compilation)
 ============================================================
-Warm-up time (includes JIT): 4.555 s
+Warm-up time (includes JIT): 4.397 s
 
 ============================================================
 Timed run
@@ -87,20 +92,21 @@ Timed run
 ============================================================
 Timing Results
 ============================================================
-Warm-up time (includes JIT): 4.555265 s
-Execution time for 10000 waveforms: 4.160532 s
-Time per waveform: 0.416 ms
-Waveforms per second: 2403.5
+Warm-up time (includes JIT): 4.397425 s
+Execution time for 10000 waveforms: 4.086162 s
+Time per waveform: 0.409 ms
+Waveforms per second: 2447.3
 ============================================================
 
-Results saved to: outdir/IMRPhenomD_H100_float64.json
-W0129 15:11:45.634924  194052 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
-W0129 15:11:45.639963  193996 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+Results saved to: outdir/IMRPhenomD_H100_float32.json
+Running IMRPhenomXAS with precision float32
+W0129 15:30:34.481002 1615219 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:30:34.486105 1615164 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
 
 ============================================================
 JAX Configuration
 ============================================================
-Precision: float64
+Precision: float32
 Requested device: gpu
 JAX devices: [CudaDevice(id=0)]
 Default backend: gpu
@@ -115,7 +121,7 @@ Number of waveforms: 10000
 Duration: 4.0 s
 Frequency range: 20.0 - 2048.0 Hz
 Reference frequency: 50.0 Hz
-Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+Git hash: b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8
 ============================================================
 
 Generated 10000 parameter sets
@@ -125,7 +131,7 @@ Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1
 ============================================================
 Warm-up run (JIT compilation)
 ============================================================
-Warm-up time (includes JIT): 28.788 s
+Warm-up time (includes JIT): 27.920 s
 
 ============================================================
 Timed run
@@ -134,20 +140,21 @@ Timed run
 ============================================================
 Timing Results
 ============================================================
-Warm-up time (includes JIT): 28.788407 s
-Execution time for 10000 waveforms: 28.576479 s
-Time per waveform: 2.858 ms
-Waveforms per second: 349.9
+Warm-up time (includes JIT): 27.920368 s
+Execution time for 10000 waveforms: 27.859104 s
+Time per waveform: 2.786 ms
+Waveforms per second: 358.9
 ============================================================
 
-Results saved to: outdir/IMRPhenomXAS_H100_float64.json
-W0129 15:13:15.637323  196886 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
-W0129 15:13:15.643865  196830 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+Results saved to: outdir/IMRPhenomXAS_H100_float32.json
+Running IMRPhenomPv2 with precision float32
+W0129 15:32:07.069789 1615759 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:32:07.075167 1615697 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
 
 ============================================================
 JAX Configuration
 ============================================================
-Precision: float64
+Precision: float32
 Requested device: gpu
 JAX devices: [CudaDevice(id=0)]
 Default backend: gpu
@@ -162,7 +169,7 @@ Number of waveforms: 10000
 Duration: 4.0 s
 Frequency range: 20.0 - 2048.0 Hz
 Reference frequency: 50.0 Hz
-Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+Git hash: b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8
 ============================================================
 
 Generated 10000 parameter sets
@@ -172,7 +179,7 @@ Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1
 ============================================================
 Warm-up run (JIT compilation)
 ============================================================
-Warm-up time (includes JIT): 6.611 s
+Warm-up time (includes JIT): 6.253 s
 
 ============================================================
 Timed run
@@ -181,20 +188,23 @@ Timed run
 ============================================================
 Timing Results
 ============================================================
-Warm-up time (includes JIT): 6.611314 s
-Execution time for 10000 waveforms: 6.409241 s
-Time per waveform: 0.641 ms
-Waveforms per second: 1560.2
+Warm-up time (includes JIT): 6.253117 s
+Execution time for 10000 waveforms: 6.031047 s
+Time per waveform: 0.603 ms
+Waveforms per second: 1658.1
 ============================================================
 
-Results saved to: outdir/IMRPhenomPv2_H100_float64.json
-W0129 15:14:10.642307  197090 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
-W0129 15:14:10.647228  197036 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+Results saved to: outdir/IMRPhenomPv2_H100_float32.json
+Running IMRPhenomXPHM with precision float32
+W0129 15:33:00.837726 1615967 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+W0129 15:33:00.842832 1615909 cuda_executor.cc:1802] GPU interconnect information not available: INTERNAL: NVML doesn't support extracting fabric info or NVLink is not used by the device.
+/gpfs/home6/twouters2/projects/11_jaxphm/.venv/lib/python3.12/site-packages/jax/_src/ops/scatter.py:108: FutureWarning: scatter inputs have incompatible types: cannot safely cast value from dtype=float64 to dtype=float32 with jax_numpy_dtype_promotion=standard. In future JAX releases this will result in an error.
+  warnings.warn(
 
 ============================================================
 JAX Configuration
 ============================================================
-Precision: float64
+Precision: float32
 Requested device: gpu
 JAX devices: [CudaDevice(id=0)]
 Default backend: gpu
@@ -209,7 +219,7 @@ Number of waveforms: 10000
 Duration: 4.0 s
 Frequency range: 20.0 - 2048.0 Hz
 Reference frequency: 50.0 Hz
-Git hash: a65fe8173315b6e1f196f63bbec941c625688a1e
+Git hash: b790c7d70bbd1feb63199b1cc51e285c2ecb4ac8
 ============================================================
 
 Generated 10000 parameter sets
@@ -219,19 +229,40 @@ Parameter keys: ['mass_1', 'mass_2', 'a_1', 'a_2', 'spin_1x', 'spin_1y', 'spin_1
 ============================================================
 Warm-up run (JIT compilation)
 ============================================================
-Warm-up time (includes JIT): 22.358 s
+Traceback (most recent call last):
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/.venv/bin/ripple_time", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/timing/timing.py", line 644, in main
+    run_timing(args)
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/timing/timing.py", line 500, in run_timing
+    warmup_time, exec_time = time_imrphenomxphm(params, config)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/timing/timing.py", line 229, in time_imrphenomxphm
+    hp, hc = generate_xphm_batched(params_stacked)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/timing/timing.py", line 220, in <lambda>
+    generate_xphm_batched = lambda xs: jax.lax.map(
+                                       ^^^^^^^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/timing/timing.py", line 202, in generate_single
+    return IMRPhenomXPHM.generate_xphm(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/waveforms/IMRPhenomXPHM.py", line 2159, in generate_xphm
+    hp, hc = twistup(Mf, mass_1, mass_2, chi1x, chi1y, chi1z, chi2x, chi2y, chi2z, phi0, inclination, reference_frequency, hlm)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/waveforms/IMRPhenomXPHM.py", line 2197, in twistup
+    theta_JN, Nz_Jf, Nx_Jf, phiJ_Sf, kappa = pPrec.compute_thetaJN_and_kappa(mass_1_fraction, mass_2_fraction, 
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/waveforms/LALSimIMRPhenomX_precession.py", line 401, in compute_thetaJN_and_kappa
+    thetaJ_Sf = jax.lax.cond(J0<1e-10, lambda _: 0.0, lambda _:jnp.acos(J0z_Sf / J0), operand = None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cond branches must have equal output types but they differ.
 
-============================================================
-Timed run
-============================================================
+true_fun is <lambda> at /gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/waveforms/LALSimIMRPhenomX_precession.py:401
+false_fun is <lambda> at /gpfs/home6/twouters2/projects/11_jaxphm/ripple/src/ripplegw/waveforms/LALSimIMRPhenomX_precession.py:401
 
-============================================================
-Timing Results
-============================================================
-Warm-up time (includes JIT): 22.358328 s
-Execution time for 10000 waveforms: 17.847598 s
-Time per waveform: 1.785 ms
-Waveforms per second: 560.3
-============================================================
+The output of true_fun has type float64[] but the corresponding output of false_fun has type float32[], so the dtypes do not match.
 
-Results saved to: outdir/IMRPhenomXPHM_H100_float64.json
+Revise true_fun and/or false_fun so that all output types match.
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.
