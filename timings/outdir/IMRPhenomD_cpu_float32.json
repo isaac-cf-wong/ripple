@@ -8,11 +8,11 @@
   "minimum_frequency": 20.0,
   "maximum_frequency": 2048.0,
   "reference_frequency": 50.0,
-  "timestamp": "2026-01-29T15:00:51.862055",
-  "git_hash": "7139b3a26cabeb5bf3f31dcfea191f44da97cbe8",
+  "timestamp": "2026-01-29T15:06:17.560553",
+  "git_hash": "0b17c500f75877168df2c958f5189928a1b0104c",
   "device_name": "cpu",
-  "warmup_time_s": 1.5598959922790527,
-  "execution_time_s": 1.3395602703094482,
-  "time_per_waveform_ms": 1.3395602703094482,
-  "waveforms_per_second": 746.5136300056082
+  "warmup_time_s": 1.951192855834961,
+  "execution_time_s": 1.5307400226593018,
+  "time_per_waveform_ms": 1.5307400226593018,
+  "waveforms_per_second": 653.2787966585826
 }

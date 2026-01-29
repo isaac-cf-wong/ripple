@@ -458,7 +458,7 @@ def run_timing(args):
         "device": args.device,
         "n_waveforms": args.n_waveforms,
         "batch_size": args.batch_size,
-        "precision": "float64" if args.float64 else "float32",
+        "precision": args.precision,
         "duration": args.duration,
         "minimum_frequency": args.f_min,
         "maximum_frequency": args.f_max,
@@ -468,7 +468,8 @@ def run_timing(args):
     }
 
     # Setup JAX and get actual device name
-    device_name = setup_jax_config(args.float64, args.device)
+    use_float64 = args.precision == "float64"
+    device_name = setup_jax_config(use_float64, args.device)
     config["device_name"] = device_name
 
     # Print configuration
@@ -549,8 +550,7 @@ def run_timing(args):
         outdir.mkdir(exist_ok=True)
 
         # Construct filename: waveform_devicename_floatxx.json
-        precision_str = "float64" if args.float64 else "float32"
-        filename = f"{args.waveform}_{device_name}_{precision_str}.json"
+        filename = f"{args.waveform}_{device_name}_{args.precision}.json"
         output_path = outdir / filename
 
     with open(output_path, "w") as f:
@@ -609,9 +609,11 @@ def main():
     )
 
     parser.add_argument(
-        "--float64",
-        action="store_true",
-        help="Use float64 precision (default is float32)",
+        "--precision",
+        type=str,
+        choices=["float32", "float64"],
+        default="float32",
+        help="Floating point precision to use",
     )
 
     parser.add_argument(
