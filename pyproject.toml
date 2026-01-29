@@ -23,6 +23,9 @@ dependencies = [
     "numpy>=1,<3",
 ]
 
+[project.scripts]
+ripple_time = "ripplegw.timing.timing:main"
+
 [project.urls]
 Documentation = "https://ripple.readthedocs.io/en/latest/"
 "Bug Tracker" = "https://github.com/GW-JAX-Team/ripple"

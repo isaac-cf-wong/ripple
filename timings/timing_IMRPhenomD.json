@@ -1,0 +1,16 @@
+{
+  "waveform": "IMRPhenomD",
+  "device": "cpu",
+  "n_waveforms": 1000,
+  "precision": "float32",
+  "duration": 4.0,
+  "minimum_frequency": 20.0,
+  "maximum_frequency": 512.0,
+  "reference_frequency": 50.0,
+  "timestamp": "2026-01-29T14:47:48.244571",
+  "git_hash": "3e99aec68bc53a0b321996bcc1b2f2f67999b6fe",
+  "warmup_time_s": 2.2745070457458496,
+  "execution_time_s": 0.49625301361083984,
+  "time_per_waveform_ms": 0.4962530136108399,
+  "waveforms_per_second": 2015.101112885527
+}
