@@ -24,7 +24,7 @@ dependencies = [
 ]
 
 [project.scripts]
-ripple_time = "ripplegw.timing.timing:main"
+ripple_time = "ripplegw.benchmarks.timings.timing:main"
 
 [project.urls]
 Documentation = "https://ripple.readthedocs.io/en/latest/"
