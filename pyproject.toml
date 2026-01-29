@@ -54,6 +54,7 @@ dev = [
     "pytest-cov>=6.0.0",
     "ruff>=0.12.2",
     "tqdm>=4.66.0",
+    "matplotlib>=3.7.0",
     # "pyright>=1.1.402",  # Temporarily disabled - re-enable once type errors are fixed
 ]
 
