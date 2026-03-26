@@ -228,43 +228,43 @@ def twistup(
         kappa,
         phiJ_Sf,
     )
-    # Unrolled per-mode twist: eliminates jax.lax.switch branch overhead and
-    # the jax.vmap over modes.  Modes 22 and 32 share emm=2, so we only call
-    # compute_evolved_spin_given_setup 4 times instead of 5.
+    # Vectorised precession angle evaluation: compute all 4 unique emm values
+    # (1,2,3,4) in a single jax.vmap call instead of 4 sequential calls.
+    emm_vals = jnp.array([1, 2, 3, 4])
+    all_alphas, all_epsilons, all_cos_betas = jax.vmap(
+        pPrec.compute_evolved_spin_given_setup, in_axes=(None, 0, None)
+    )(Mf, emm_vals, _msa_setup)
+    # all_alphas, all_epsilons, all_cos_betas: shape (4, N)
 
-    # Mode 21 – emm = 1
-    alpha_1, eps_1, cos_beta_1 = pPrec.compute_evolved_spin_given_setup(
-        Mf, 1, _msa_setup
+    # Wigner-d half-angle trig for each emm
+    all_cBetah, all_sBetah = jax.vmap(IMRPhenomXWignerdCoefficients_cosbeta)(
+        all_cos_betas
     )
-    cBetah_1, sBetah_1 = IMRPhenomXWignerdCoefficients_cosbeta(cos_beta_1)
-    beta_powers_1 = BetaPowers.from_half_angle_trig(cBetah_1, sBetah_1)
-    hp_21, hc_21 = twist_21(jnp.exp(1j * alpha_1), theta_JN, beta_powers_1)
+    # all_cBetah, all_sBetah: shape (4, N)
 
-    # Modes 22 and 32 – both use emm = 2; compute angles once and reuse
-    alpha_2, eps_2, cos_beta_2 = pPrec.compute_evolved_spin_given_setup(
-        Mf, 2, _msa_setup
-    )
-    cBetah_2, sBetah_2 = IMRPhenomXWignerdCoefficients_cosbeta(cos_beta_2)
-    beta_powers_2 = BetaPowers.from_half_angle_trig(cBetah_2, sBetah_2)
-    cexp_i_alpha_2 = jnp.exp(1j * alpha_2)
-    hp_22, hc_22 = twist_22(cexp_i_alpha_2, theta_JN, beta_powers_2)
-    hp_32, hc_32 = twist_32(cexp_i_alpha_2, theta_JN, beta_powers_2)
+    # Complex exponentials of alpha for each emm
+    all_cexp_i_alpha = jnp.exp(1j * all_alphas)  # shape (4, N)
 
-    # Mode 33 – emm = 3
-    alpha_3, eps_3, cos_beta_3 = pPrec.compute_evolved_spin_given_setup(
-        Mf, 3, _msa_setup
-    )
-    cBetah_3, sBetah_3 = IMRPhenomXWignerdCoefficients_cosbeta(cos_beta_3)
-    beta_powers_3 = BetaPowers.from_half_angle_trig(cBetah_3, sBetah_3)
-    hp_33, hc_33 = twist_33(jnp.exp(1j * alpha_3), theta_JN, beta_powers_3)
+    # Build BetaPowers per emm by indexing into the vmapped arrays
+    beta_powers_1 = BetaPowers.from_half_angle_trig(all_cBetah[0], all_sBetah[0])
+    beta_powers_2 = BetaPowers.from_half_angle_trig(all_cBetah[1], all_sBetah[1])
+    beta_powers_3 = BetaPowers.from_half_angle_trig(all_cBetah[2], all_sBetah[2])
+    beta_powers_4 = BetaPowers.from_half_angle_trig(all_cBetah[3], all_sBetah[3])
 
-    # Mode 44 – emm = 4
-    alpha_4, eps_4, cos_beta_4 = pPrec.compute_evolved_spin_given_setup(
-        Mf, 4, _msa_setup
+    # Per-mode twist (modes 22 and 32 share emm=2)
+    hp_21, hc_21 = twist_21(all_cexp_i_alpha[0], theta_JN, beta_powers_1)
+    hp_22, hc_22 = twist_22(all_cexp_i_alpha[1], theta_JN, beta_powers_2)
+    hp_32, hc_32 = twist_32(all_cexp_i_alpha[1], theta_JN, beta_powers_2)
+    hp_33, hc_33 = twist_33(all_cexp_i_alpha[2], theta_JN, beta_powers_3)
+    hp_44, hc_44 = twist_44(all_cexp_i_alpha[3], theta_JN, beta_powers_4)
+
+    # Unpack individual alpha/epsilon arrays for epsilon stacking below
+    eps_1, eps_2, eps_3, eps_4 = (
+        all_epsilons[0],
+        all_epsilons[1],
+        all_epsilons[2],
+        all_epsilons[3],
     )
-    cBetah_4, sBetah_4 = IMRPhenomXWignerdCoefficients_cosbeta(cos_beta_4)
-    beta_powers_4 = BetaPowers.from_half_angle_trig(cBetah_4, sBetah_4)
-    hp_44, hc_44 = twist_44(jnp.exp(1j * alpha_4), theta_JN, beta_powers_4)
 
     # Stack into (5, N) matching the old vmap output layout
     hp_twist_all_modes = jnp.stack([hp_21, hp_22, hp_32, hp_33, hp_44], axis=0)
@@ -916,47 +916,57 @@ def XLALSimIMRPhenomHMGethlmModes(
             0,  # ell
             0,  # mm
             None,  # phi0
+            None,  # PhenomD_coeffs
+            None,  # PhenomD_transition_freqs
         ),
     )
 
     hlms = vmapped_IMRPhenomHMEvaluateOnehlmMode(
-        freqs_geom, pHM, pHM["ell_mm_pairs"][:, 0], pHM["ell_mm_pairs"][:, 1], phi0
+        freqs_geom,
+        pHM,
+        pHM["ell_mm_pairs"][:, 0],
+        pHM["ell_mm_pairs"][:, 1],
+        phi0,
+        PhenomD_coeffs,
+        PhenomD_transition_freqs,
     )
 
     return hlms
 
 
 def IMRPhenomHMEvaluateOnehlmMode(
-    freqs_geom: Float, pHM: dict, ell: int, mm: int, phi0: Float
+    freqs_geom: Float,
+    pHM: dict,
+    ell: int,
+    mm: int,
+    phi0: Float,
+    PhenomD_coeffs: Float,
+    PhenomD_transition_freqs: tuple,
 ):
     """
     Implementation of IMRPhenomHMEvaluateOnehlmMode in LALSimIMRPhenomHM.c
     """
 
     # generate phase and amplitude for single l,m mode
-    phase_lm = IMRPhenomHMPhase(freqs_geom, pHM, ell, mm)
-    amp_lm = IMRPhenomHMAmplitude(freqs_geom, pHM, ell, mm)
+    phase_lm = IMRPhenomHMPhase(
+        freqs_geom, pHM, ell, mm, PhenomD_coeffs, PhenomD_transition_freqs
+    )
+    amp_lm = IMRPhenomHMAmplitude(
+        freqs_geom, pHM, ell, mm, PhenomD_coeffs, PhenomD_transition_freqs
+    )
 
     # compute time shift using pre-computed fRD, fdamp from pHM (with PhenomPv2 final spin)
     theta_intrinsic = jnp.array([pHM["m1"], pHM["m2"], pHM["chi1z"], pHM["chi2z"]])
-    coeffs = get_coeffs(theta_intrinsic)
 
-    # IMPORTANT: Use PhenomD-style fRD, fdamp for t0 calculation to match LAL's IMRPhenomDComputet0
+    # Use pre-computed transition frequencies for f4 (fmaxCalc)
+    f4 = PhenomD_transition_freqs[3]
     M_s = pHM["Mtot"] * MTSUN
-    f_RD = pHM["Mf_RD_22_PhenomD"] / M_s  # Convert from Mf to Hz
-    f_damp = pHM["Mf_DM_22_PhenomD"] / M_s
+    f_RD = PhenomD_transition_freqs[4]
+    f_damp = PhenomD_transition_freqs[5]
 
-    # Compute f4 (fmaxCalc) using the correct fRD, fdamp
-    gamma2, gamma3 = coeffs[5], coeffs[6]
-    f4 = jax.lax.cond(
-        gamma2 >= 1,
-        lambda: jnp.abs(f_RD + (-f_damp * gamma3) / gamma2),
-        lambda: jnp.abs(
-            f_RD + (f_damp * (-1 + jnp.sqrt(1 - gamma2**2)) * gamma3) / gamma2
-        ),
+    t0 = jax.grad(get_IIb_raw_phase)(
+        f4 * M_s, theta_intrinsic, PhenomD_coeffs, f_RD, f_damp
     )
-
-    t0 = jax.grad(get_IIb_raw_phase)(f4 * M_s, theta_intrinsic, coeffs, f_RD, f_damp)
 
     Mf = freqs_geom
     phase_term1 = -t0 * (Mf - pHM["Mf_ref"])
@@ -1246,7 +1256,14 @@ def IMRPhenomHMFreqDomainMap(Mflm, ell, mm, pHM, AmpFlag):
     return Mf22
 
 
-def IMRPhenomHMAmplitude(freqs_geom: Array, pHM: dict, ell: int, mm: int):
+def IMRPhenomHMAmplitude(
+    freqs_geom: Array,
+    pHM: dict,
+    ell: int,
+    mm: int,
+    PhenomD_coeffs: Float,
+    PhenomD_transition_freqs: tuple,
+):
     """
     Returns IMRPhenomHM amplitude evaluated at a set of input frequencies for the l,m mode
     Implementation of IMRPhenomHMAmplitude in LALSimIMRPhenomHM.c
@@ -1261,34 +1278,8 @@ def IMRPhenomHMAmplitude(freqs_geom: Array, pHM: dict, ell: int, mm: int):
     # NOTE: Use IMRPhenDAmplitude_NoCut instead of IMRPhenomD_Amp because
     # the mapped frequencies can exceed fM_CUT for higher modes
 
-    # compute time shift using pre-computed fRD, fdamp from pHM (with PhenomPv2 final spin)
     theta = jnp.array([pHM["m1"], pHM["m2"], pHM["chi1z"], pHM["chi2z"]])
-    PhenomD_coeffs = get_coeffs(theta)
 
-    # IMPORTANT: Use PhenomD-style fRD, fdamp (from PhenomD QNM data) for the amplitude calculation.
-    # LAL's IMRPhenomDAmpFrequencySequence uses fring()/fdamp() from LALSimIMRPhenomD_internals.c
-    # which use QNMData_fring/QNMData_fdamp, NOT SimRingdownCW_CW07102016.
-    M_s = pHM["Mtot"] * MTSUN
-    f_RD = pHM["Mf_RD_22_PhenomD"] / M_s  # Convert from Mf to Hz
-    f_damp = pHM["Mf_DM_22_PhenomD"] / M_s
-
-    # Phase transition frequencies
-    f1 = 0.018 / (M_s)
-    f2 = 0.5 * f_RD
-
-    # Amplitude transition frequencies
-    f3 = 0.014 / (M_s)
-    # Compute f4 (fmaxCalc) using the correct fRD, fdamp
-    gamma2, gamma3 = PhenomD_coeffs[5], PhenomD_coeffs[6]
-    f4 = jax.lax.cond(
-        gamma2 >= 1,
-        lambda: jnp.abs(f_RD + (-f_damp * gamma3) / gamma2),
-        lambda: jnp.abs(
-            f_RD + (f_damp * (-1 + jnp.sqrt(1 - gamma2**2)) * gamma3) / gamma2
-        ),
-    )
-
-    PhenomD_transition_freqs = (f1, f2, f3, f4, f_RD, f_damp)
     amps_normalized = IMRPhenDAmplitude_NoCut(
         freqs_amp / (pHM["Mtot"] * MTSUN),
         theta,
@@ -1433,43 +1424,31 @@ def IMRPhenomHMOnePointFiveSpinPN(fM, ell, m, M1, M2, X1z, X2z):
     return M * M * PI * jnp.sqrt(eta * 2.0 / 3) * v ** (-3.5) * jnp.abs(Hlm)
 
 
-def IMRPhenomHMPhase(freqs_geom: Array, pHM: dict, ell: int, mm: int):
+def IMRPhenomHMPhase(
+    freqs_geom: Array,
+    pHM: dict,
+    ell: int,
+    mm: int,
+    PhenomD_coeffs: Float,
+    PhenomD_transition_freqs: tuple,
+):
     """
     Returns IMRPhenomHM phase evaluated at a set of input frequencies for the l,m mode
     Implementation of IMRPhenomHMPhase in LALSimIMRPhenomHM.c
     """
 
     q = {}
-    q = IMRPhenomHMPhasePreComp(q, ell, mm, pHM)
+    q = IMRPhenomHMPhasePreComp(
+        q, ell, mm, pHM, PhenomD_coeffs, PhenomD_transition_freqs
+    )
 
     # Get mode index for array lookup
     mode_idx = pHM["mode_index_map"][ell, mm]
     Rholm = pHM["Rholm"][mode_idx]
     Taulm = pHM["Taulm"][mode_idx]
 
-    # compute time shift using pre-computed fRD, fdamp from pHM (with PhenomPv2 final spin)
     theta = jnp.array([pHM["m1"], pHM["m2"], pHM["chi1z"], pHM["chi2z"]])
-    PhenomD_coeffs = get_coeffs(theta)
     M_s = pHM["Mtot"] * MTSUN
-    f_RD = pHM["Mf_RD_22_PhenomD"] / M_s  # Convert from Mf to Hz
-    f_damp = pHM["Mf_DM_22_PhenomD"] / M_s
-
-    # Phase transition frequencies
-    f1 = 0.018 / (M_s)
-    f2 = 0.5 * f_RD
-
-    # Amplitude transition frequencies
-    f3 = 0.014 / (M_s)
-    # Compute f4 (fmaxCalc) using the correct fRD, fdamp
-    gamma2, gamma3 = PhenomD_coeffs[5], PhenomD_coeffs[6]
-    f4 = jax.lax.cond(
-        gamma2 >= 1,
-        lambda: jnp.abs(f_RD + (-f_damp * gamma3) / gamma2),
-        lambda: jnp.abs(
-            f_RD + (f_damp * (-1 + jnp.sqrt(1 - gamma2**2)) * gamma3) / gamma2
-        ),
-    )
-    PhenomD_transition_freqs = (f1, f2, f3, f4, f_RD, f_damp)
 
     def PhenDPhaseA(freqs_geom):
         Mf = (q["ai"] * freqs_geom + q["bi"]) / M_s  # ripple PhenomD uses f[Hz] here
@@ -1522,7 +1501,14 @@ def IMRPhenomHMPhase(freqs_geom: Array, pHM: dict, ell: int, mm: int):
     return phase
 
 
-def IMRPhenomHMPhasePreComp(q: dict, ell: int, emm: int, pHM: dict):
+def IMRPhenomHMPhasePreComp(
+    q: dict,
+    ell: int,
+    emm: int,
+    pHM: dict,
+    PhenomD_coeffs: Float,
+    PhenomD_transition_freqs: tuple,
+):
     """
     Implementation of IMRPhenomHMPhasePreComp in LALSimIMRPhenomHM.c
     """
@@ -1561,15 +1547,6 @@ def IMRPhenomHMPhasePreComp(q: dict, ell: int, emm: int, pHM: dict):
 
     M_s = pHM["Mtot"] * MTSUN
     theta = jnp.array([pHM["m1"], pHM["m2"], pHM["chi1z"], pHM["chi2z"]])
-    PhenomD_coeffs = get_coeffs(theta)
-
-    # IMPORTANT: Use PhenomD-style fRD/fdamp (from PhenomD QNM data with PhenomPv2 final spin)
-    # to match LAL's IMRPhenomDSetupAmpAndPhaseCoefficients behavior
-    f_RD = pHM["Mf_RD_22_PhenomD"] / M_s  # Convert from Mf to Hz
-    f_damp = pHM["Mf_DM_22_PhenomD"] / M_s
-    PhenomD_transition_freqs = get_transition_frequencies_from_fRD_fdamp(
-        theta, PhenomD_coeffs[5], PhenomD_coeffs[6], f_RD, f_damp
-    )
 
     PhDBMf = q["am"] * fi + q["bm"]
     q["PhDBconst"] = (
