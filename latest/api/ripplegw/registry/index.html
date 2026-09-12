@@ -12,11 +12,13 @@
         <meta name="author" content="GW JAX Team">
       
       
-        <link rel="canonical" href="https://gw-jax-team.github.io/ripple/latest/api/ripplegw/typing/">
+        <link rel="canonical" href="https://gw-jax-team.github.io/ripple/latest/api/ripplegw/registry/">
       
       
-        <link rel="prev" href="../registry/">
+        <link rel="prev" href="../interfaces/">
       
+      
+        <link rel="next" href="../typing/">
       
       
         
@@ -27,7 +29,7 @@
     
     
       
-        <title>Typing - ripple</title>
+        <title>Registry - ripple</title>
       
     
     
@@ -83,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ripplegw.typing" class="md-skip">
+        <a href="#ripplegw.registry" class="md-skip">
           Skip to content
         </a>
       
@@ -121,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Typing
+              Registry
             
           </span>
         </div>
@@ -1228,33 +1230,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../registry/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  registry
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1272,7 +1247,7 @@
   <span class="md-ellipsis">
     
   
-  typing
+  registry
 
     
   </span>
@@ -1289,7 +1264,7 @@
   <span class="md-ellipsis">
     
   
-  typing
+  registry
 
     
   </span>
@@ -1313,10 +1288,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ripplegw.typing" class="md-nav__link">
+  <a href="#ripplegw.registry" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        typing
+        registry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.WAVEFORM_REGISTRY" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        WAVEFORM_REGISTRY
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.get_waveform_metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        get_waveform_metadata
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.list_waveforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        list_waveforms
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.register" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        register
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.waveform" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        waveform
       </span>
     </span>
   </a>
@@ -1327,6 +1357,33 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../typing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  typing
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1384,10 +1441,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ripplegw.typing" class="md-nav__link">
+  <a href="#ripplegw.registry" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        typing
+        registry
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.WAVEFORM_REGISTRY" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        WAVEFORM_REGISTRY
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.get_waveform_metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        get_waveform_metadata
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.list_waveforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        list_waveforms
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.register" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        register
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ripplegw.registry.waveform" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        waveform
       </span>
     </span>
   </a>
@@ -1412,16 +1524,24 @@
   
 
 
-  <h1 id="__skip">Typing</h1>
+  <h1 id="__skip">Registry</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<a id="ripplegw.typing"></a>
+<a id="ripplegw.registry"></a>
     <div class="doc doc-contents first">
 
-        <p>Convenience type aliases for jaxtyping scalar annotations.</p>
+        <p>Top-level waveform registry.</p>
+<p>A single, family-agnostic entry point for constructing waveforms by name. Each
+<code>Waveform</code> subclass registers itself with <code>register</code>. Users then construct
+any model through <code>waveform</code> without importing the implementing module:</p>
+<pre><code>import ripplegw
+wf = ripplegw.waveform("IMRPhenomXAS", f_ref=20.0)
+ripplegw.list_waveforms(domain="FD")
+</code></pre>
+<p>Adding a family means adding a self-registering module — never editing this file.</p>
 
 
 
@@ -1431,6 +1551,80 @@
 
 
 
+<p><span class="doc-section-title">Functions:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;get_waveform_metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;" href="./#ripplegw.registry.get_waveform_metadata">get_waveform_metadata</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Return a copy of the descriptive metadata for a registered waveform.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;list_waveforms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;" href="./#ripplegw.registry.list_waveforms">list_waveforms</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>List registered waveform names, optionally filtered by metadata.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;override&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;" href="./#ripplegw.registry.register">register</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Class decorator that adds a <code>Waveform</code> subclass to the registry.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;waveform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Waveform&lt;/span&gt;&lt;/code&gt;" href="./#ripplegw.registry.waveform">waveform</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Construct a registered waveform by name.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="&lt;code class=&quot;highlight language-python&quot;&gt;&lt;span class=&quot;n&quot;&gt;WAVEFORM_REGISTRY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Waveform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;&lt;/code&gt;
+
+  &lt;span class=&quot;doc doc-labels&quot;&gt;
+      &lt;small class=&quot;doc doc-label doc-label-module-attribute&quot;&gt;&lt;code&gt;module-attribute&lt;/code&gt;&lt;/small&gt;
+  &lt;/span&gt;" href="./#ripplegw.registry.WAVEFORM_REGISTRY">WAVEFORM_REGISTRY</a></code></td>
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="type">type</span>[<a class="autorefs autorefs-internal" href="../interfaces/#ripplegw.interfaces.Waveform">Waveform</a>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Global name -&gt; <code>Waveform</code> subclass registry, populated at import by</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -1442,8 +1636,449 @@
 
 
 
+<div class="doc doc-object doc-attribute">
 
 
+
+<h3 id="ripplegw.registry.WAVEFORM_REGISTRY" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">WAVEFORM_REGISTRY</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">[</span><span class="n">Waveform</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#ripplegw.registry.WAVEFORM_REGISTRY" class="headerlink" title="Permanent link">¤</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Global name -&gt; <code>Waveform</code> subclass registry, populated at import by
+<code>register</code>.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ripplegw.registry.get_waveform_metadata" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_waveform_metadata</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span></code>
+
+<a href="#ripplegw.registry.get_waveform_metadata" class="headerlink" title="Permanent link">¤</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return a copy of the descriptive metadata for a registered waveform.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A registered model name.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span>[<span title="str">str</span>, <span title="typing.Any">Any</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The model's metadata, e.g. <code>{"domain": "FD", ...}</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>name</code> is not registered.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ripplegw.registry.list_waveforms" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">list_waveforms</span><span class="p">(</span><span class="o">**</span><span class="n">filters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span></code>
+
+<a href="#ripplegw.registry.list_waveforms" class="headerlink" title="Permanent link">¤</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>List registered waveform names, optionally filtered by metadata.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>**filters</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Constraints on <code>waveform_metadata</code>, e.g. <code>domain="FD"</code> or
+<code>is_precessing=True</code>. A model matches only if its metadata defines
+every requested key with the requested value. Unknown/typo'd keys
+simply match nothing; use <code>get_waveform_metadata</code> to inspect
+available keys.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="list">list</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Sorted matching names.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ripplegw.registry.register" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">register</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">override</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">metadata</span><span class="p">)</span></code>
+
+<a href="#ripplegw.registry.register" class="headerlink" title="Permanent link">¤</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Class decorator that adds a <code>Waveform</code> subclass to the registry.</p>
+<p>Keyword arguments are stored on the class as <code>waveform_metadata</code>; that is
+what <code>list_waveforms</code> filters on.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Registry key users pass to <code>waveform()</code>. Defaults to the class name.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>override</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Allow replacing a name that is already registered.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**metadata</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Descriptive tags, e.g. <code>is_tidal=True</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The decorator, which returns the class unchanged.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>name</code> is already registered and <code>override</code> is False.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="TypeError">TypeError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If the decorated class is not a <code>Waveform</code> subclass.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="ripplegw.registry.waveform" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">waveform</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">**</span><span class="n">config</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Waveform</span></code>
+
+<a href="#ripplegw.registry.waveform" class="headerlink" title="Permanent link">¤</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Construct a registered waveform by name.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A registered model name (see <code>list_waveforms</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>**config</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Constructor configuration forwarded to the model
+(e.g. <code>f_ref=20.0</code> for CBC models).</p>
+              </div>
+            </td>
+            <td>
+                  <code>{}</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><a class="autorefs autorefs-internal" href="../interfaces/#ripplegw.interfaces.Waveform">Waveform</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A configured instance, callable as <code>wf(axis, params)</code>.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If <code>name</code> is not registered.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    </div>
+
+</div>
 
 
 

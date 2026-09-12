@@ -12,13 +12,13 @@
         <meta name="author" content="GW JAX Team">
       
       
-        <link rel="canonical" href="https://gw-jax-team.github.io/ripple/latest/contributing/">
+        <link rel="canonical" href="https://gw-jax-team.github.io/ripple/latest/dev/">
       
       
-        <link rel="prev" href="../citing/">
+        <link rel="prev" href="../guides/benchmarking/">
       
       
-        <link rel="next" href="../api/ripplegw/">
+        <link rel="next" href="./architecture/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Contributing - ripple</title>
+        <title>Developer Guide - ripple</title>
       
     
     
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contributing" class="md-skip">
+        <a href="#developer-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contributing
+              Developer Guide
             
           </span>
         </div>
@@ -275,14 +275,16 @@
   
   
   
+    
+  
   
     
       
     
     
     
-      <li class="md-tabs__item">
-        <a href="../dev/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="././" class="md-tabs__link">
           
   
   Developer Guide
@@ -329,11 +331,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="././" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../contributing/" class="md-tabs__link">
         
   
   Contributing
@@ -722,24 +722,29 @@
       
   
   
+    
   
   
+  
     
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
             
   
   
@@ -756,7 +761,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -770,10 +775,36 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../dev/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Developer Guide
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -788,6 +819,49 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Setting up
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        In this guide
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -800,7 +874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dev/architecture/" class="md-nav__link">
+      <a href="./architecture/" class="md-nav__link">
         
   
   
@@ -827,7 +901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dev/adding_a_waveform/" class="md-nav__link">
+      <a href="./adding_a_waveform/" class="md-nav__link">
         
   
   
@@ -854,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dev/test_coverage/" class="md-nav__link">
+      <a href="./test_coverage/" class="md-nav__link">
         
   
   
@@ -881,7 +955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dev/run_reference_checks/" class="md-nav__link">
+      <a href="./run_reference_checks/" class="md-nav__link">
         
   
   
@@ -908,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dev/reference_comparisons_and_limits/" class="md-nav__link">
+      <a href="./reference_comparisons_and_limits/" class="md-nav__link">
         
   
   
@@ -991,36 +1065,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Contributing
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
         
   
   
@@ -1035,82 +1083,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#expectations" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Expectations
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#did-you-find-a-bug" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Did you find a bug?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#did-you-write-a-patch-that-fixes-a-bug" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Did you write a patch that fixes a bug?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-you-intend-to-add-a-new-feature-or-change-an-existing-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do you intend to add a new feature or change an existing one?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-you-intend-to-add-an-example-or-tutorial" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do you intend to add an example or tutorial?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1429,10 +1401,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#expectations" class="md-nav__link">
+  <a href="#setting-up" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Expectations
+        Setting up
       </span>
     </span>
   </a>
@@ -1440,43 +1412,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#did-you-find-a-bug" class="md-nav__link">
+  <a href="#in-this-guide" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Did you find a bug?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#did-you-write-a-patch-that-fixes-a-bug" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Did you write a patch that fixes a bug?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-you-intend-to-add-a-new-feature-or-change-an-existing-one" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do you intend to add a new feature or change an existing one?
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#do-you-intend-to-add-an-example-or-tutorial" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        Do you intend to add an example or tutorial?
+        In this guide
       </span>
     </span>
   </a>
@@ -1501,37 +1440,24 @@
   
 
 
-<h1 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">¤</a></h1>
-<p>Contributions of any kind are welcome and appreciated.
-See the guidelines below.</p>
-<h2 id="expectations">Expectations<a class="headerlink" href="#expectations" title="Permanent link">¤</a></h2>
-<p>ripple is developed and maintained by the GW JAX Team and community contributors.
-While we try to be responsive, we don’t always get to every issue immediately.
-If it has been more than a week or two, feel free to ping the maintainers on the issue.</p>
-<h2 id="did-you-find-a-bug">Did you find a bug?<a class="headerlink" href="#did-you-find-a-bug" title="Permanent link">¤</a></h2>
-<p><strong>Ensure the bug was not already reported</strong> by searching on GitHub under <a href="https://github.com/GW-JAX-Team/ripple/issues">Issues</a>.
-If you’re unable to find an open issue addressing the problem, <a href="https://github.com/GW-JAX-Team/ripple/issues/new">open a new one</a>.
-Be sure to include a <strong>title and clear description</strong>, as much relevant information as possible, and the simplest possible <strong>code sample</strong> demonstrating the expected behaviour that is not occurring.</p>
-<h2 id="did-you-write-a-patch-that-fixes-a-bug">Did you write a patch that fixes a bug?<a class="headerlink" href="#did-you-write-a-patch-that-fixes-a-bug" title="Permanent link">¤</a></h2>
-<p>Open a new GitHub pull request with the patch.
-Ensure the PR description clearly describes the problem and solution.
-Include the relevant issue number if applicable.</p>
-<h2 id="do-you-intend-to-add-a-new-feature-or-change-an-existing-one">Do you intend to add a new feature or change an existing one?<a class="headerlink" href="#do-you-intend-to-add-a-new-feature-or-change-an-existing-one" title="Permanent link">¤</a></h2>
-<p>Open a new GitHub pull request with the feature or change.
-Please follow these principles:</p>
-<ol>
-<li>New features should be able to take advantage of <code>jax.jit</code> wherever possible.</li>
-<li>Modular implementation is preferred.</li>
-<li>If a waveform is ported from an existing implementation, it should match the original to machine precision.
-   If that is not achievable, a clear explanation of the discrepancy must be provided.
-   New waveforms implemented directly in ripple are not subject to this requirement.</li>
-</ol>
-<p>If you are unsure whether a feature fits, open an issue first to discuss it with the maintainers.</p>
-<p>Adding a new waveform is the most common feature contribution — see the <a href="https://gw-jax-team.github.io/ripple/latest/dev/">Developer Guide</a> for the architecture and a step-by-step walkthrough.</p>
-<h2 id="do-you-intend-to-add-an-example-or-tutorial">Do you intend to add an example or tutorial?<a class="headerlink" href="#do-you-intend-to-add-an-example-or-tutorial" title="Permanent link">¤</a></h2>
-<p>Open a new GitHub pull request with the example or tutorial.
-The example should be self-contained and keep imports from other packages to a minimum.
-Leave case-specific analysis details out.</p>
+<h1 id="developer-guide">Developer Guide<a class="headerlink" href="#developer-guide" title="Permanent link">¤</a></h1>
+<p>This guide covers contributing to ripple's internals — in particular, implementing a new waveform model.
+For the process side of contributing (bug reports, pull requests, feature principles), see <a href="../contributing/">Contributing</a>.</p>
+<h2 id="setting-up">Setting up<a class="headerlink" href="#setting-up" title="Permanent link">¤</a></h2>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/GW-JAX-Team/ripple.git
+<span class="nb">cd</span><span class="w"> </span>ripple
+uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--group<span class="w"> </span>doc
+uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+</code></pre></div>
+<p><code>pre-commit</code> should pass cleanly before you open a PR.</p>
+<h2 id="in-this-guide">In this guide<a class="headerlink" href="#in-this-guide" title="Permanent link">¤</a></h2>
+<ul>
+<li><strong><a href="architecture/">Architecture</a></strong> — Why ripple is organised the way it is: the design goals, the registry, and the <code>Waveform</code> class hierarchy.</li>
+<li><strong><a href="adding_a_waveform/">Adding a Waveform</a></strong> — Step by step: implement, register, and validate a new model.</li>
+<li><strong><a href="test_coverage/">Test Coverage</a></strong> — What the test suite protects, what it checks automatically, and what a new waveform needs.</li>
+<li><strong><a href="run_reference_checks/">Run Reference Checks</a></strong> — Select one waveform and run its reference checks locally, on Slurm, or on HTCondor.</li>
+<li><strong><a href="reference_comparisons_and_limits/">Reference Comparisons and Limits</a></strong> — How ripple is compared with external references for each supported waveform, including thresholds and known limits.</li>
+</ul>
 
 
 
